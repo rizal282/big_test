@@ -30,6 +30,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Masuk'), centerTitle: true,),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(10),

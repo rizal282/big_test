@@ -7,19 +7,23 @@ class DeliveryController {
       Map<String, dynamic> mapBody) async {
     List<DeliveryModel> dataDelivery = [];
 
-    final result =
-        await ServiceApi.postData(UrlConstant.urlDetailDelivery, mapBody);
+    try {
+      final result =
+          await ServiceApi.postData(UrlConstant.urlDetailDelivery, mapBody);
 
-    for (int i = 0; i < result.length; i++) {
-      dataDelivery.add(DeliveryModel(
-          idOrder: result[i]['id_order'].toString(),
-          kotaAsal: result[i]['kab_asal'],
-          kotaTujuan: result[i]['kab_tujuan'],
-          tanggalKirim: result[i]['tgl_pengiriman'],
-          statusKirim: result[i]['status_pengiriman'],
-          jenisTruk: result[i]['jenis_kendaraan']));
+      for (int i = 0; i < result.length; i++) {
+        dataDelivery.add(DeliveryModel(
+            idOrder: result[i]['id_order'].toString(),
+            kotaAsal: result[i]['kab_asal'],
+            kotaTujuan: result[i]['kab_tujuan'],
+            tanggalKirim: result[i]['tgl_pengiriman'],
+            statusKirim: result[i]['status_pengiriman'],
+            jenisTruk: result[i]['jenis_kendaraan']));
+      }
+
+      return dataDelivery;
+    } catch (e) {
+      return [];
     }
-
-    return dataDelivery;
   }
 }

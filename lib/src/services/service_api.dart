@@ -29,6 +29,7 @@ class ServiceApi {
       return json.decode(response.body);
     } catch (e) {
       debugPrint("Error get data -> $e");
+      return [];
     }
   }
 
@@ -42,6 +43,7 @@ class ServiceApi {
       return json.decode(response.body);
     } catch (e) {
       debugPrint("Error post data -> ${e.toString()}");
+      return [];
     }
   }
 
